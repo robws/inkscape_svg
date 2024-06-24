@@ -1,0 +1,13 @@
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Apply Class to Selected</name>
+    <id>apply_class</id>
+    <param name="class_name" type="string" _gui-text="Class Name" />
+	<effect>
+		<object-type>all</object-type>
+		<effects-menu>
+		</effects-menu>
+	</effect>
+	<script>
+		<command location="inx" interpreter="python">applyclasstoselected.py</command>
+	</script>
+</inkscape-extension>

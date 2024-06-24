@@ -1,0 +1,12 @@
+﻿<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Cleanup SVG for Animation</name>
+    <id>cleanup_svg_animation</id>
+    <effect>
+        <object-type>all</object-type>
+        <effects-menu>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">cleanup_svg_animation.py</command>
+    </script>
+</inkscape-extension>
