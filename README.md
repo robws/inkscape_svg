@@ -1,5 +1,5 @@
 # inkscape_svg
-Inkscape SVG-focused extensions to add arbitrary classes to selected objetcs, and to "clean up" SVG files as you prepare them for animation.
+Inkscape SVG-focused extensions to add arbitrary classes to selected objects, and to "clean up" SVG files as you prepare them for animation.
 
 
 ## Manifest/index
