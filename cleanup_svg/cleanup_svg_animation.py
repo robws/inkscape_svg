@@ -1,4 +1,13 @@
-﻿import inkex
+﻿#!/usr/bin/env python3
+#
+# License: GPL2
+# Copyright Robert Hudson
+# , Mark "Klowner" Riedesel (apply transformations)
+# , Mario Voigt / FabLab Chemnitz (remove empty groups)
+#
+# derived work included in attached .py files
+#
+import inkex
 from applytransform import ApplyTransform  # Assuming ApplyTransform is in a file named applytransform.py
 
 class CleanupSVGAnimation(inkex.Effect):
@@ -6,6 +15,13 @@ class CleanupSVGAnimation(inkex.Effect):
         super().__init__()
 
     def effect(self):
+        """ Run a series of actions and custom functions to clean up this document
+    
+    
+        Execute built-in vacuum-defs (remove unused defs) and object-to-path actions
+        along with the custom actions defined here (apply all transforms and remove empty groups)
+    
+        """
         actions = [
             'vacuum-defs',
             'object-to-path'
@@ -22,6 +38,10 @@ class CleanupSVGAnimation(inkex.Effect):
         self.remove_empty_groups()
 
     def apply_transform(self):
+        """
+        Applies transformations to the current SVG document using the ApplyTransform extension.
+        """
+
         apply_transform = ApplyTransform()
         apply_transform.svg = self.svg
         apply_transform.document = self.document
@@ -29,6 +49,9 @@ class CleanupSVGAnimation(inkex.Effect):
         inkex.utils.debug("ApplyTransform executed successfully")
 
     def remove_empty_groups(self):
+        """
+        Removes empty group <g> elements from the SVG Document
+        """
         groups = self.document.xpath('//svg:g', namespaces=inkex.NSS)
         if len(groups) == 0:
             return
@@ -40,8 +63,16 @@ class CleanupSVGAnimation(inkex.Effect):
                 group = parent
 
     def call_inkscape_command(self, action):
-        # Apply the action to the current document
+        """Calls built-in Inkscape commands to manipulate the current document.
+
+        Args:
+            action (str): The action to apply to the current document (e.g., 'vacuum-defs', 'object-to-path').
+        """
         inkex.command.inkscape(self.svg_file, actions=action)
 
 if __name__ == '__main__':
+    """
+      Runs the CleanupSVGAnimation effect on the current SVG document 
+      by invoking the inherited run() method from inkex.Effect.
+    """
     CleanupSVGAnimation().run()
