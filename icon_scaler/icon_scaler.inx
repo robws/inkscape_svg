@@ -1,0 +1,11 @@
+﻿<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>Scale File to Icon Sizing</name>
+    <id>icon_scaler</id>
+    <effect>
+        <object-type>all</object-type>
+        <effects-menu>Extensions</effects-menu>
+    </effect>
+    <script>
+        <command location="inx" interpreter="python">icon_scaler.py</command>
+    </script>
+</inkscape-extension>
